@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" placeholder="Enter employee name">
+    <button onclick="AddName()">Add Name </button>
+    <button onclick="Sort_Display()">sort & display</button>
+     <ul class="un_list">
+         <h1>Sorted employee names</h1>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+     </ul>
+
+   
+</body>
+<script>
+
+     
+    let arr = []
+
+function AddName() {
+    const inputs = document.getElementsByTagName("input")
+    const a = inputs[0].value
+   
+    if(arr.length<6){
+        arr.push(a)
+        console.log(arr)
+    }
+    else{
+        let a=window.alert("you  already entered values more then 6")
+    }
+}
+
+
+    
+    
+   function Sort_Display() {
+    arr.sort();
+
+    let list = document.getElementsByClassName("un_list")[0];
+
+    let items = list.getElementsByTagName("li");
+
+    for (let i = 0; i < arr.length; i++) {
+        items[i].innerText = "this is it" + arr[i];
+    }
+}
+
+    
+
+
+
+
+</script>
+</html>
