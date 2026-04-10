@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="books.js"></script>
+</head>
+<body>
+    <button onclick="getData()">click</button>
+    <input type="number" id="input">
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>#id</th>
+                    <th>title</th>
+                    <th>author</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+<script>
+    
+  async function getData(){
+  const  input = document.getElementById('input').value
+    try{
+        const book=await searchBook(Number(input))
+          console.log(book)
+    }
+      catch(error){
+        console.log(error)
+      }
+  }
+
+   
+  function searchBook(id){
+    const tbody = document.getElementById('tbody')
+
+    return new Promise((resolve ,reject)=>{
+        for(e of books){
+      if(e.id == id ){
+         const row = `<tr>
+          <td>${e.id}</td>
+          <td>${e.title}</td>
+          <td>${e.author}</td>
+        </tr>`
+        tbody.innerHTML += row
+        resolve(e)
+        return
+    }
+
+    }
+    reject('there is nothing like this')
+    })
+  }
+
+</script>
+
+</body>
+</html>
